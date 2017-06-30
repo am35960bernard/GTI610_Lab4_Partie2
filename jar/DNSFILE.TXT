@@ -1,2 +1,17 @@
-
-soleil.ca 143.95.251.41
+reseau.fr 5.135.252.9
+google.fr 172.217.1.163
+c.bing.com 10.99.45.98
+c.bing.com 48.49.8.97
+c.bing.com 192.40.0.5
+c.bing.com 0.1.0.1
+banane.com 208.80.7.227
+client.com 69.172.201.153
+www.msn.com 11.119.119.119
+www.msn.com 48.48.51.8
+www.msn.com 0.192.41.0
+zoo.com 34.202.117.202
+zoo.com 52.87.147.234
+zoo.com 52.86.65.69
+bateau.com 208.113.207.237
+lune.com 192.64.119.92
+bernaRDmillEt.com 68.178.254.16

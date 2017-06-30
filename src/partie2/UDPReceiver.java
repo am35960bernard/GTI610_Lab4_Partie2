@@ -265,7 +265,7 @@ public class UDPReceiver extends Thread {
 					
 					 for (int i=0; i < listOfDomainIpForAquery.size(); i++){
 						 
-						 System.out.println("listOfDomainIpForAquery: " + i + " :" + listOfDomainIpForAquery.get(i));
+						 System.out.println("Une adresse IP a ete trouve: \"" + listOfDomainIpForAquery.get(i) + "\"");
 						 
 
 					 }
@@ -281,7 +281,7 @@ public class UDPReceiver extends Thread {
 						
 
 	
-						System.out.println("Debut de la recherche DNS");
+						System.out.println("Debut de la recherche DNS pour: \"" + domainName+"\"");
 						// *Si le mode est redirection seulement
 						if(RedirectionSeulement == true){
 							System.out.println("le mode est redirection seulement");

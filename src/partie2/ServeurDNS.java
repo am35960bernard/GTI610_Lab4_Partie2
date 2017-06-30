@@ -2,8 +2,7 @@
 
 import java.io.File;
 import java.io.IOException;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
+
 
  /**
  * Application principale qui lance les autres processus
@@ -58,10 +57,10 @@ public class ServeurDNS {
 				*/
 				
 				//Bernard DNS					
-				//UDPR.setSERVER_DNS("192.168.1.1");
+				UDPR.setSERVER_DNS("192.168.1.1");
 									
 				//Ecole DNS
-				UDPR.setSERVER_DNS("10.162.8.51");
+				//UDPR.setSERVER_DNS("10.162.8.51");
 				//UDPR.setSERVER_DNS("10.194.8.60");
 				
 

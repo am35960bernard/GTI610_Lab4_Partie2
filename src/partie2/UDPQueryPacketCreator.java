@@ -30,8 +30,6 @@ public class UDPQueryPacketCreator {
 
 		nbrOfBytesInQuerry = standardStartNbrOfBytes + nbrOfAdditionalBytes;
 		
-		System.out.println("->" + nbrOfBytesInQuerry);
-		//nbrOfBytesInQuerry = 27;
 		
 	}
 	
@@ -52,8 +50,8 @@ public class UDPQueryPacketCreator {
 	    String destIp = address.getHostAddress() ;	
 		UDPSender udps = new UDPSender(destIp, destPort, sendsocket);
 
+
 		byte[] EnteteEtQuestion = new byte[nbrOfBytesInQuerry];
-		
 
 		
 		int randomInt1 = (int)(Math.random() * 256);
@@ -89,70 +87,50 @@ public class UDPQueryPacketCreator {
 
 
 		
-		int counterPosOfDomain=	PosStartOfDomain;
-	for (int i = 0; i < domainParts.length; i++) {
-		
-		String word = domainParts[i] ;
-					
+		int counterPosOfDomain = PosStartOfDomain;
+		for (int i = 0; i < domainParts.length; i++) {
+			
+			String word = domainParts[i] ;
+						
+			EnteteEtQuestion[counterPosOfDomain] = (byte) word.length(); 	
+	
 
-		System.out.println(counterPosOfDomain + " " +(byte) word.length());
-		
-		
-		
-		for (int j = 0; j < word.length(); j++) {
+			for (int j = 0; j < word.length(); j++) {
+				
+				counterPosOfDomain ++;
+				
+				byte b = (byte)((byte)word.charAt(j)& 0xFF);
+				EnteteEtQuestion[counterPosOfDomain] = (byte) b; 
+	    
+			}
 			
 			counterPosOfDomain ++;
 			
-			StringBuilder sb = new StringBuilder();
-			byte b = (byte)((byte)word.charAt(j)& 0xFF);
-		    System.out.println(counterPosOfDomain + " " +  sb.append(String.format("%02X ", b)));
-		    
 		}
 		
+		
+		EnteteEtQuestion[counterPosOfDomain] = (byte) 0x00;//0000 0000
 		counterPosOfDomain ++;
+	
+	
+	
+		//Type :A	
+		EnteteEtQuestion[counterPosOfDomain] = (byte) 0x00;//0000 0000
+		counterPosOfDomain ++;	
 		
-	}
 	
-
-	System.out.println(counterPosOfDomain + " " +(byte) 0);	
-
-	
-	
-	
-	
-	
+		EnteteEtQuestion[counterPosOfDomain] = (byte) 0x01;//0000 0001
+		counterPosOfDomain ++;	
 		
-		//6 
-		EnteteEtQuestion[12] = (byte) 0x06; //0000 0110		
-		//s
-		EnteteEtQuestion[13] = (byte) 0x73; //0111 0011			
-		//o
-		EnteteEtQuestion[14] = (byte) 0x6f; //0110 1111
-		//l
-		EnteteEtQuestion[15] = (byte) 0x6c; //0110 1100			
-		//e 
-		EnteteEtQuestion[16] = (byte) 0x65; //0110 0101		
-		//i
-		EnteteEtQuestion[17] = (byte) 0x69; //0110 1001			
-		//l
-		EnteteEtQuestion[18] = (byte) 0x6c; //0110 1100
-		//2
-		EnteteEtQuestion[19] = (byte) 0x02; //0000 0010	
-		//c
-		EnteteEtQuestion[20] = (byte) 0x63; //0110 0011
-		//a
-		EnteteEtQuestion[21] = (byte) 0x61; //0110 0001			
-		//0
-		EnteteEtQuestion[22] = (byte) 0x00; //0000 0000			
+	
+		//Class :IN		
+		EnteteEtQuestion[counterPosOfDomain] = (byte) 0x00;//0000 0000
+		counterPosOfDomain ++;	
 		
-
-		//Type :A
-		EnteteEtQuestion[23] = (byte) 0x00; //0000 0000
-		EnteteEtQuestion[24] = (byte) 0x01; //0000 0001
-		
-		//Class :IN
-		EnteteEtQuestion[25] = (byte) 0x00; //0000 0000
-		EnteteEtQuestion[26] = (byte) 0x01; //0000 0001			
+	
+		EnteteEtQuestion[counterPosOfDomain] = (byte) 0x01;//0000 0001
+		counterPosOfDomain ++;		
+	
 				
 		try {
 		
